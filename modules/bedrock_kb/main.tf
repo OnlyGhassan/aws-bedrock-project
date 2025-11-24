@@ -106,7 +106,7 @@ resource "aws_bedrockagent_knowledge_base" "main" {
   role_arn = aws_iam_role.bedrock_kb_role.arn
   knowledge_base_configuration {
     vector_knowledge_base_configuration {
-      embedding_model_arn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v1"
+      embedding_model_arn = "arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-embed-text-v1"
     }
     type = "VECTOR"
   }
@@ -119,7 +119,7 @@ resource "aws_bedrockagent_knowledge_base" "main" {
       table_name = var.aurora_table_name
       field_mapping {
         primary_key_field = var.aurora_primary_key_field
-        vector_field   = var.aurora_verctor_field
+        vector_field   = var.aurora_vector_field
         text_field     = var.aurora_text_field
         metadata_field = var.aurora_metadata_field
       }
@@ -131,9 +131,7 @@ resource "aws_bedrockagent_knowledge_base" "main" {
 
 data "aws_caller_identity" "current" {}
 
-locals {
-  bucket_name = "bedrock-kb-${data.aws_caller_identity.current.account_id}"
-}
+
 
 resource "aws_bedrockagent_data_source" "s3_bedrock_bucket" {
   knowledge_base_id = aws_bedrockagent_knowledge_base.main.id

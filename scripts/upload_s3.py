@@ -29,10 +29,10 @@ def upload_files_to_s3(folder_path, bucket_name, prefix=""):
 
 if __name__ == "__main__":
     # Folder path
-    folder_path = "spec-sheets"
+    folder_path = "/mnt/c/Users/onlyg/Downloads/aws-bedrock-project/scripts/spec-sheets"
     
     # S3 bucket name
-    bucket_name = "bedrock-kb-975050171524"  # Replace with your actual bucket name
+    bucket_name = "bedrock-kb-495690773549"  # Replace with your actual bucket name
     
     # S3 prefix (optional)
     prefix = "spec-sheets" 
